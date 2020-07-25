@@ -1,24 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vxp-md-lEV">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CityWeatherViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City1,City2,City3..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mlT-gy-j07">
+                                <rect key="frame" x="10" y="54" width="300" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aNB-cK-tt5"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QEM-eE-jME">
+                                <rect key="frame" x="0.0" y="98" width="320" height="470"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yH7-IX-EHE">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Current Location Weather"/>
+                                    <connections>
+                                        <action selector="currentLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s2F-lz-BgZ"/>
+                                    </connections>
+                                </button>
+                                <connections>
+                                    <outlet property="dataSource" destination="S1g-rz-rAg" id="kep-x7-Vca"/>
+                                    <outlet property="delegate" destination="S1g-rz-rAg" id="8lr-al-7j8"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="i2k-qu-0EK">
+                                <rect key="frame" x="150" y="296" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QEM-eE-jME" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EOe-Mr-bkf"/>
+                            <constraint firstItem="mlT-gy-j07" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="FdK-tv-TcX"/>
+                            <constraint firstItem="QEM-eE-jME" firstAttribute="top" secondItem="mlT-gy-j07" secondAttribute="bottom" constant="10" id="ZCS-kb-oJr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mlT-gy-j07" secondAttribute="trailing" constant="10" id="che-VC-DGn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QEM-eE-jME" secondAttribute="trailing" id="fgx-G0-v1S"/>
+                            <constraint firstItem="mlT-gy-j07" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="jUs-YI-aJz"/>
+                            <constraint firstItem="i2k-qu-0EK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="k0L-zx-Jgl"/>
+                            <constraint firstItem="i2k-qu-0EK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rSR-2f-q8S"/>
+                            <constraint firstItem="QEM-eE-jME" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wjX-59-Xh0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Weather" id="nBz-AB-xKx"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="i2k-qu-0EK" id="R7J-iV-3Jk"/>
+                        <outlet property="cityNamesTextField" destination="mlT-gy-j07" id="f66-A5-eNf"/>
+                        <outlet property="tableViewHandler" destination="S1g-rz-rAg" id="OQB-vW-aab"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="S1g-rz-rAg" customClass="CityWeatherTableViewHandler" customModule="WeatherForecast" customModuleProvider="target">
+                    <connections>
+                        <outlet property="tableView" destination="QEM-eE-jME" id="2uu-xm-23C"/>
+                    </connections>
+                </customObject>
             </objects>
+            <point key="canvasLocation" x="332" y="-8"/>
+        </scene>
+        <!--Location Weather-->
+        <scene sceneID="51t-f1-DBe">
+            <objects>
+                <viewController storyboardIdentifier="LocationWeatherViewController" title="Location Weather" id="7so-af-yGS" customClass="LocationWeatherViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNf-gn-MiX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ztz-oj-qLM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-x9-qqg">
+                                <rect key="frame" x="0.0" y="39" width="320" height="529"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nqs-JW-fJO" id="c1P-el-ri2"/>
+                                    <outlet property="delegate" destination="Nqs-JW-fJO" id="eew-Z0-1f1"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="LOd-Zo-I0I">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6b9-x9-qqg" firstAttribute="top" secondItem="Ztz-oj-qLM" secondAttribute="bottom" constant="8" id="0vV-dM-LIf"/>
+                            <constraint firstItem="DUI-dp-6q5" firstAttribute="trailing" secondItem="6b9-x9-qqg" secondAttribute="trailing" id="2Om-hl-k1X"/>
+                            <constraint firstItem="LOd-Zo-I0I" firstAttribute="centerX" secondItem="DUI-dp-6q5" secondAttribute="centerX" id="6qH-Qz-NNM"/>
+                            <constraint firstItem="DUI-dp-6q5" firstAttribute="trailing" secondItem="Ztz-oj-qLM" secondAttribute="trailing" id="AmS-gr-ayK"/>
+                            <constraint firstItem="6b9-x9-qqg" firstAttribute="leading" secondItem="DUI-dp-6q5" secondAttribute="leading" id="D32-yv-Aqs"/>
+                            <constraint firstItem="Ztz-oj-qLM" firstAttribute="top" secondItem="DUI-dp-6q5" secondAttribute="top" id="r7r-hF-vpI"/>
+                            <constraint firstItem="DUI-dp-6q5" firstAttribute="bottom" secondItem="6b9-x9-qqg" secondAttribute="bottom" id="rVU-6m-gkR"/>
+                            <constraint firstItem="Ztz-oj-qLM" firstAttribute="leading" secondItem="DUI-dp-6q5" secondAttribute="leading" id="sEV-IT-RqS"/>
+                            <constraint firstItem="LOd-Zo-I0I" firstAttribute="centerY" secondItem="DUI-dp-6q5" secondAttribute="centerY" id="xDq-kQ-Yil"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DUI-dp-6q5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="diQ-qw-g0g"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="LOd-Zo-I0I" id="Qdn-bc-s30"/>
+                        <outlet property="tableViewHandler" destination="Nqs-JW-fJO" id="Gfv-Rl-jmH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjW-Lm-Z5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Nqs-JW-fJO" customClass="LocationWeatherTableViewHandler">
+                    <connections>
+                        <outlet property="tableView" destination="6b9-x9-qqg" id="N0O-FV-tCW"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="1218.75" y="-19.014084507042252"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8wP-GR-lvG">
+            <objects>
+                <navigationController id="vxp-md-lEV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Muk-nD-2DP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BtK-D0-xfq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsA-QN-N32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-593" y="-8"/>
         </scene>
     </scenes>
 </document>
