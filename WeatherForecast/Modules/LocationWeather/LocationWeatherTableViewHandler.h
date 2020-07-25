@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-//#import "WeatherForecast-Swift.h"
+
 @class ForecastResponse;
 
 NS_ASSUME_NONNULL_BEGIN
