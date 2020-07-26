@@ -14,6 +14,7 @@ import UIKit
     @IBOutlet weak var tempratureLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,12 +27,13 @@ import UIKit
     }
     
     override func prepareForReuse() {
+        timeLabel.text = ""
         tempratureLabel.text = ""
         windLabel.text = ""
         descriptionLabel.text = ""
     }
     
-    func displayContents(main: Main, wind: Wind, weather: Weather?) {
+    func displayContents(main: Main, wind: Wind, weather: Weather?, time: String) {
         let temp = main.temp - Constant.kelvinOffset
         let minTemp = main.temp_min - Constant.kelvinOffset
         let maxTemp = main.temp_max - Constant.kelvinOffset
@@ -42,5 +44,6 @@ import UIKit
         if let weather = weather {
             descriptionLabel.text = weather.desc
         }
+        timeLabel.text = time
     }
 }

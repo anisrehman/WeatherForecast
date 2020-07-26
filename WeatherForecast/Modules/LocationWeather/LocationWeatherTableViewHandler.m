@@ -43,7 +43,7 @@
     DateForecast *dateForecast = [_cityForecast.dateForecasts objectAtIndex:indexPath.section];
     
     TimeForecast *timeForecast = [dateForecast.timeForcasts objectAtIndex:indexPath.row];
-    [cell displayContentsWithMain:timeForecast.main wind:timeForecast.wind weather:timeForecast.weather];
+    [cell displayContentsWithMain:timeForecast.main wind:timeForecast.wind weather:timeForecast.weather time:timeForecast.time];
     return cell;
 }
 

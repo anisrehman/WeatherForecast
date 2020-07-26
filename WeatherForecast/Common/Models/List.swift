@@ -18,7 +18,7 @@ import UIKit
     
     var date: String {
         let components = dt_txt.components(separatedBy: " ")
-        if components.count > 1 {
+        if components.count > 0 {
             return components[0]
         }
         return ""
@@ -26,7 +26,7 @@ import UIKit
     
     var time: String {
         let components = dt_txt.components(separatedBy: " ")
-        if components.count > 2 {
+        if components.count > 1 {
             return components[1]
         }
         return ""

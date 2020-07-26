@@ -46,7 +46,7 @@ extension CityWeatherTableViewHandler: UITableViewDataSource {
         if weatherResponse.weather.count > 0 {
             weather = weatherResponse.weather[0]
         }
-        cell.displayContents(main: weatherResponse.main, wind: weatherResponse.wind, weather: weather)
+        cell.displayContents(main: weatherResponse.main, wind: weatherResponse.wind, weather: weather, time: "")
         return cell
     }
 }
