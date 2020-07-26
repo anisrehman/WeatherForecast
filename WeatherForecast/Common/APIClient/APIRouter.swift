@@ -52,6 +52,9 @@ enum APIRouter: APIConfiguration {
             return [Constant.APIParameter.appID: Constant.apiKey,
                     Constant.APIParameter.lat: "\(location.coordinate.latitude)",
                     Constant.APIParameter.lon: "\(location.coordinate.longitude)"]
+//            return [Constant.APIParameter.appID: Constant.apiKey,
+//                    Constant.APIParameter.lat: "25.2048",
+//                Constant.APIParameter.lon: "55.2708"]
         }
     }
     

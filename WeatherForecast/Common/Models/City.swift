@@ -9,8 +9,8 @@
 import UIKit
 
 @objcMembers class City: NSObject, Codable {
-    let id: Int
-    let name: String
+    let id: Int?
+    let name: String?
     let coord: Coordinate?
     let country: String?
 }
