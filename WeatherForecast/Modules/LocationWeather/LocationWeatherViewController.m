@@ -7,6 +7,8 @@
 //
 
 #import "LocationWeatherViewController.h"
+#import "WeatherForecast-Swift.h"
+#import "CityForecast.h"
 
 @implementation LocationWeatherViewController
 
@@ -18,9 +20,10 @@
     [self.presenter fetchCurrentLocationWeather];
 }
 
-- (void)showWeatherForecastWithResponse:(ForecastResponse *)forcastResponse {
+- (void)showWeatherForecastWithCityForcast:(CityForecast *)cityForecast {
     [_activityIndicatorView stopAnimating];
-    [self.tableViewHandler showForecast:forcastResponse];
+    self.title = cityForecast.cityName;
+    [self.tableViewHandler showForecast:cityForecast];
 }
 
 - (void)showError:(NSString *)error {

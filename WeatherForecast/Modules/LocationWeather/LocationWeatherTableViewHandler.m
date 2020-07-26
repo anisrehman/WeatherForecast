@@ -8,13 +8,14 @@
 
 #import "LocationWeatherTableViewHandler.h"
 #import "WeatherForecast-Swift.h"
+#import "CityForecast.h"
 
 @implementation LocationWeatherTableViewHandler {
-    ForecastResponse* _forecastResponse;
+    CityForecast* _cityForecast;
 }
 
-- (void)showForecast:(ForecastResponse*)forecastResponse {
-    _forecastResponse = forecastResponse;
+- (void)showForecast:(CityForecast*)cityForecast {
+    _cityForecast = cityForecast;
     [self reloadData];
 }
 
@@ -23,15 +24,26 @@
 }
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _cityForecast.dateForecasts.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _forecastResponse.list.count;
+    DateForecast *dateForecast = [_cityForecast.dateForecasts objectAtIndex:section];
+    return dateForecast.timeForcasts.count;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    DateForecast *dateForecast = [_cityForecast.dateForecasts objectAtIndex:section];
+    return dateForecast.date;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CityWeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityWeatherTableViewCell"];
-    List *list = [_forecastResponse.list objectAtIndex:indexPath.row];
-    Weather * weather = [list.weather objectAtIndex:0];
-    [cell displayContentsWithMain:list.main wind:list.wind weather:weather];
+    DateForecast *dateForecast = [_cityForecast.dateForecasts objectAtIndex:indexPath.section];
+    
+    TimeForecast *timeForecast = [dateForecast.timeForcasts objectAtIndex:indexPath.row];
+    [cell displayContentsWithMain:timeForecast.main wind:timeForecast.wind weather:timeForecast.weather];
     return cell;
 }
 

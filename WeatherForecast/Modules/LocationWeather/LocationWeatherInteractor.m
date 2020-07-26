@@ -55,11 +55,11 @@
     
     [APIClient fetchWeatherForecastWithLocation:_currentLocation completion:^(ForecastResponse *response, NSString *errorMessage) {
         if (response != nil) {
-            
             [self.presenter showWeatherForecastWithResponse:response];
         } else {
             [self.presenter showError:errorMessage];
         }
     }];
 }
+
 @end

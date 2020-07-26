@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class ForecastResponse;
+@class CityForecast;
 
 #pragma mark - WireFrameProtocol
 
@@ -26,7 +27,7 @@
 @protocol LocationWeatherInteractorOutputProtocol <NSObject>
 
 /** Interactor -> Presenter */
-- (void)showWeatherForecastWithResponse:(ForecastResponse *)forcastResponse;
+- (void)showWeatherForecastWithResponse:(ForecastResponse *)response;
 - (void)showError:(NSString *)error;
 @end
 
@@ -44,6 +45,6 @@
 @protocol LocationWeatherViewProtocol <NSObject>
 
 /** Presenter -> ViewController */
-- (void)showWeatherForecastWithResponse:(ForecastResponse *)forcastResponse;
+- (void)showWeatherForecastWithCityForcast:(CityForecast *)cityForecast;
 - (void)showError:(NSString *)error;
 @end

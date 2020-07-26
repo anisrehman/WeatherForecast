@@ -15,4 +15,20 @@ import UIKit
     let clouds: Clouds
     let wind: Wind
     let dt_txt: String
+    
+    var date: String {
+        let components = dt_txt.components(separatedBy: " ")
+        if components.count > 1 {
+            return components[0]
+        }
+        return ""
+    }
+    
+    var time: String {
+        let components = dt_txt.components(separatedBy: " ")
+        if components.count > 2 {
+            return components[1]
+        }
+        return ""
+    }
 }

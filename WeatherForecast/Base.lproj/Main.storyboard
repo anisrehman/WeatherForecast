@@ -81,15 +81,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ztz-oj-qLM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-x9-qqg">
-                                <rect key="frame" x="0.0" y="39" width="320" height="529"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Nqs-JW-fJO" id="c1P-el-ri2"/>
@@ -102,14 +95,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6b9-x9-qqg" firstAttribute="top" secondItem="Ztz-oj-qLM" secondAttribute="bottom" constant="8" id="0vV-dM-LIf"/>
                             <constraint firstItem="DUI-dp-6q5" firstAttribute="trailing" secondItem="6b9-x9-qqg" secondAttribute="trailing" id="2Om-hl-k1X"/>
                             <constraint firstItem="LOd-Zo-I0I" firstAttribute="centerX" secondItem="DUI-dp-6q5" secondAttribute="centerX" id="6qH-Qz-NNM"/>
-                            <constraint firstItem="DUI-dp-6q5" firstAttribute="trailing" secondItem="Ztz-oj-qLM" secondAttribute="trailing" id="AmS-gr-ayK"/>
                             <constraint firstItem="6b9-x9-qqg" firstAttribute="leading" secondItem="DUI-dp-6q5" secondAttribute="leading" id="D32-yv-Aqs"/>
-                            <constraint firstItem="Ztz-oj-qLM" firstAttribute="top" secondItem="DUI-dp-6q5" secondAttribute="top" id="r7r-hF-vpI"/>
+                            <constraint firstItem="6b9-x9-qqg" firstAttribute="top" secondItem="DUI-dp-6q5" secondAttribute="top" id="M2X-xv-cyD"/>
                             <constraint firstItem="DUI-dp-6q5" firstAttribute="bottom" secondItem="6b9-x9-qqg" secondAttribute="bottom" id="rVU-6m-gkR"/>
-                            <constraint firstItem="Ztz-oj-qLM" firstAttribute="leading" secondItem="DUI-dp-6q5" secondAttribute="leading" id="sEV-IT-RqS"/>
                             <constraint firstItem="LOd-Zo-I0I" firstAttribute="centerY" secondItem="DUI-dp-6q5" secondAttribute="centerY" id="xDq-kQ-Yil"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DUI-dp-6q5"/>
