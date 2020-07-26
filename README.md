@@ -14,6 +14,9 @@ These are the screens in project.
 1. CityWeather - It has been developed in Swift using VIPER architecture. User should enter comma separated city names. It shows cities weather in the list
 2. LocationWeather - It has been developed in Objective C using VIPER architecture. It is using APIClient class (developed in Swift) to call the weather API and parse it. It shows the current location weather for days and hours grouped by date.
 
+### Unit Tests
+Not developed yet.
+
 
 
 
